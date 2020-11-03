@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VideoCadr
+namespace VideoAudio
 {
     public class VideoProcess
     {
@@ -37,51 +37,61 @@ namespace VideoCadr
             FinalVideo.Start();
         }
 
-        public void TakeScrTxt(Bitmap bitmap)
+        public void MakeTxtFromBitmap(Bitmap bitmap)
         {
-            //Random random = new Random();
-            //string writePath = $@"D:\IT\repos\VideoCadr\Frames\{random.Next()}.txt";
-            //using (FileStream sw = File.Create(writePath))
-            //{
-            //    for (int x = 0; x < bitmap.Width; x++)
-            //    {
-            //        for (int y = 0; y < bitmap.Height; y++)
-            //        {
-            //            Color pixelColor = bitmap.GetPixel(x, y);
-
-            //            // Color newColor = Color.FromArgb(pixelColor.R, 0, 0);
-            //            // image1.SetPixel(x, y, newColor);
-
-            //        }
-            //    }
-            //}
-            string path = @"D:\IT\repos\VideoCadr\Frames\sep.txt";
-            using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
+            Random random = new Random();
+            string test = "test";
+            string path =   $@"D:\IT\repos\VideoCadr\Txt\{test}.txt"; //random.Next()
+            using (StreamWriter sw = new StreamWriter(path, false, Encoding.Default))
             {
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
                     {
                         Color c = bitmap.GetPixel(i, j);
-                        sw.WriteLine("R|"+Convert.ToString(c.R,2));
-                        sw.WriteLine("G|"+Convert.ToString(c.G,2));
-                        sw.WriteLine("B|"+Convert.ToString(c.B,2));
-
+                        sw.WriteLine(c.R);
+                        sw.WriteLine(c.G);
+                        sw.WriteLine(c.B);
                     }
                 }
             }
         }
+        
+        public Bitmap MakeBitmapFromTxt(string path,int height,int width)
+        {
+            Bitmap res = new Bitmap(width, height);
+            using (StreamReader sr = new StreamReader(path, Encoding.Default)) 
+            {
+                int R,G,B;
+                Color c;
+
+                for (int i = 0; i < width; i++)
+                {
+                    for (int j = 0; j < height; j++)
+                    {
+                        R = Convert.ToByte(sr.ReadLine());
+                        G = Convert.ToByte(sr.ReadLine());
+                        B = Convert.ToByte(sr.ReadLine());
+                       
+                        c = Color.FromArgb(R, G, B);                    
+                        res.SetPixel(i, j, c);
+                    }
+                }
+            }
+
+            return res;
+        }
+
         public void SaveImage(Bitmap bitmap)
         {
-            string path = @"D:\IT\repos\VideoCadr\Frames\image.bmp";
+            Random random = new Random();
+            string path = $@"D:\IT\repos\VideoCadr\Frames\{random.Next()}.bmp";
 
-            if (bitmap!=null)
+            if (bitmap != null)
             {
                 Bitmap varBmp = new Bitmap(bitmap);
                 varBmp.Save(path, ImageFormat.Png);
-
                 varBmp.Dispose();
-                varBmp = null;
             }
             else
             {

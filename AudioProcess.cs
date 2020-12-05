@@ -14,16 +14,19 @@ namespace VideoAudio
         private WaveFileWriter writer;
         private WaveOut waveOut;
         private WaveFileReader reader;
+        private Random random;
 
-
-        string outputFilename = @"D:\IT\repos\VideoCadr\Audio\test.wav";
+       // 
 
         public AudioProcess()
         {
-           // waveOut
+            random = new Random();
         }
-        public void Play()
+        public void Play(string outputFilename)
         {
+            if (outputFilename=="")           
+                return;
+            
             reader = new WaveFileReader(outputFilename);
             waveOut = new WaveOut();
             waveOut.Init(reader);
@@ -31,14 +34,31 @@ namespace VideoAudio
         }
         public void Pause()
         {
+            if (!HasAudio())
+            {
+                return;
+            }
             waveOut.Pause();
         }
         public void ResumePlay()
         {
+            if (!HasAudio())
+            {
+                return;
+            }
             waveOut.Resume();
+        }
+        public void Stop()
+        {
+            if (!HasAudio())
+            {
+                return;
+            }
+            waveOut.Stop();
         }
         public void StartRecording(EventHandler<WaveInEventArgs> WaveIn_DataAvailable, EventHandler WaveIn_RecordingStopped)
         {
+            string outputFilename = $@"D:\IT\repos\VideoCadr\Audio\{random.Next()}.wav";
             waveIn = new WaveIn();
             waveIn.DeviceNumber = 0;
             waveIn.DataAvailable += WaveIn_DataAvailable;
@@ -87,8 +107,8 @@ namespace VideoAudio
 
         public void MakeTxtFromWav(string filepath)
         {
+            if (filepath == "") return;
             byte[] res = FileToByteArray(filepath);
-            Random random = new Random();
             string resPath = $@"D:\IT\repos\VideoCadr\Txt\{random.Next()}.txt";
             using (StreamWriter sw = new StreamWriter(resPath, false, Encoding.Default))
             {
@@ -97,6 +117,10 @@ namespace VideoAudio
                     sw.WriteLine(item);
                 }
             }
+        }
+        public bool HasAudio()
+        {
+            return waveOut != null;
         }
     }
 }

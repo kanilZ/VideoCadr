@@ -40,10 +40,12 @@ namespace VideoAudio
         public void MakeTxtFromBitmap(Bitmap bitmap)
         {
             Random random = new Random();
-            string test = "test";
-            string path =   $@"D:\IT\repos\VideoCadr\Txt\{test}.txt"; //random.Next()
+           // string test = "test";
+            string path =   $@"D:\IT\repos\VideoCadr\Txt\{random.Next()}.txt"; //
             using (StreamWriter sw = new StreamWriter(path, false, Encoding.Default))
             {
+                sw.WriteLine(bitmap.Width);
+                sw.WriteLine(bitmap.Height);
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -57,29 +59,30 @@ namespace VideoAudio
             }
         }
         
-        public Bitmap MakeBitmapFromTxt(string path,int height,int width)
+        public Bitmap MakeBitmapFromTxt(string path)
         {
-            Bitmap res = new Bitmap(width, height);
             using (StreamReader sr = new StreamReader(path, Encoding.Default)) 
             {
+                int width = Convert.ToInt32(sr.ReadLine()), height = Convert.ToInt32(sr.ReadLine());
                 int R,G,B;
+                Bitmap res = new Bitmap(width, height);
                 Color c;
 
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
                     {
-                        R = Convert.ToByte(sr.ReadLine());
-                        G = Convert.ToByte(sr.ReadLine());
-                        B = Convert.ToByte(sr.ReadLine());
+                        R = Convert.ToInt32(sr.ReadLine());
+                        G = Convert.ToInt32(sr.ReadLine());
+                        B = Convert.ToInt32(sr.ReadLine());
                        
                         c = Color.FromArgb(R, G, B);                    
                         res.SetPixel(i, j, c);
                     }
                 }
+                return res;
             }
 
-            return res;
         }
 
         public void SaveImage(Bitmap bitmap)

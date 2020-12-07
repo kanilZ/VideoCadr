@@ -44,12 +44,18 @@ namespace VideoAudio
         private void buttonResult_Click(object sender, EventArgs e)
         {
             pictureBoxOutput.Image = MarkObject.Apply((Bitmap)pictureBoxOutput.Image);
-            pictureBoxOutput.Image = 
+            pictureBoxOutput.Image = Circumscription.Apply((Bitmap)pictureBoxOutput.Image);
+            Circumscription.DrawLines(Circumscription.objectEdges, (Bitmap)pictureBoxInput.Image);
         }
 
         private void buttonEdgeFilter_Click(object sender, EventArgs e)
         {
             pictureBoxOutput.Image = EdgeFilter.Apply((Bitmap)pictureBoxOutput.Image);
+        }
+
+        private void saveObjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

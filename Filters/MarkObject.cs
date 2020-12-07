@@ -20,28 +20,29 @@ namespace VideoAudio.Filters
             List<Color> colors = new List<Color>() { Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Lime, Color.Pink, Color.Aqua };//          
             Queue<Pixel> queueColors = new Queue<Pixel>();
             Queue<Pixel> bufColors = new Queue<Pixel>();
+            Pixel[,] pixels = BitmapOperations.MakePixelArray(bitmap);
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    if (BitmapOperations.CheckColor(bitmap.GetPixel(i, j)))
+                    if (!BitmapOperations.IsWhiteColor(pixels[i, j].Color) && !pixels[i, j].IsChecked)
                     {
-                        queueColors.Enqueue(new Pixel(i, j));
-                        bufColors.Enqueue(new Pixel(i, j));
+                        queueColors.Enqueue(pixels[i, j]);
+                        bufColors.Enqueue(pixels[i, j]);
                         if (iterator == colors.Count)
                             iterator = 0;
 
                         while (queueColors.Count != 0)
                         {
-                            BitmapOperations.FindNeighbours(bitmap, queueColors);
-                            SaveToBuf(queueColors, bufColors);
-                            BitmapOperations.PaintCells(bitmap, queueColors, colors[iterator]);
+                            BitmapOperations.FindNeighbours(pixels, queueColors);
+                            BitmapOperations.SaveToBuf(queueColors, bufColors);
+                            BitmapOperations.PaintCells(bitmap, queueColors.ToList(), colors[iterator]);
                         }
 
                         iterator++;
-                        if (IsMoreThan20(bufColors.Count))
-                            BitmapOperations.PaintCells(bitmap, bufColors, Color.White);
+                        if (!IsMoreThan20(bufColors.Count))
+                            BitmapOperations.PaintCells(bitmap, bufColors.ToList(), Color.White);
 
                         bufColors.Clear();
                     }
@@ -51,16 +52,10 @@ namespace VideoAudio.Filters
             return bitmap;
         }
 
-        private static void SaveToBuf(Queue<Pixel> main, Queue<Pixel> buf)
-        {
-            foreach (var item in main)
-            {
-                buf.Enqueue(item);
-            }
-        }
+       
         private static bool IsMoreThan20(int checkSum)
         {
-            return checkSum >= 20 ? false : true;
+            return checkSum >= 20 ? true : false;
         }
 
 

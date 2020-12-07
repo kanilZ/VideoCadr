@@ -34,7 +34,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.uploadPhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.зберегтиФотоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveObjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
             this.buttonEdgeFilter = new System.Windows.Forms.Button();
@@ -86,25 +86,26 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadPhotoToolStripMenuItem,
-            this.зберегтиФотоToolStripMenuItem});
+            this.saveObjectsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 30);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // uploadPhotoToolStripMenuItem
             // 
             this.uploadPhotoToolStripMenuItem.Name = "uploadPhotoToolStripMenuItem";
-            this.uploadPhotoToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
+            this.uploadPhotoToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.uploadPhotoToolStripMenuItem.Text = "Завантажити фото";
             this.uploadPhotoToolStripMenuItem.Click += new System.EventHandler(this.uploadPhotoToolStripMenuItem_Click);
             // 
-            // зберегтиФотоToolStripMenuItem
+            // saveObjectsToolStripMenuItem
             // 
-            this.зберегтиФотоToolStripMenuItem.Name = "зберегтиФотоToolStripMenuItem";
-            this.зберегтиФотоToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
-            this.зберегтиФотоToolStripMenuItem.Text = "Зберегти фото";
+            this.saveObjectsToolStripMenuItem.Name = "saveObjectsToolStripMenuItem";
+            this.saveObjectsToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.saveObjectsToolStripMenuItem.Text = "Зберегти об\'єкти";
+            this.saveObjectsToolStripMenuItem.Click += new System.EventHandler(this.saveObjectsToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -174,6 +175,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonResult;
         private System.Windows.Forms.Button buttonEdgeFilter;
-        private System.Windows.Forms.ToolStripMenuItem зберегтиФотоToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveObjectsToolStripMenuItem;
     }
 }

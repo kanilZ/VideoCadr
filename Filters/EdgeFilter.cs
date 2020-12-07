@@ -23,17 +23,19 @@ namespace VideoAudio.Filters
         private static void RowColmChecking(ref Bitmap bitmap, int row, int colmn, bool state)
         {
             Queue<Pixel> queueColors = new Queue<Pixel>();
+            Pixel[,] pixels = BitmapOperations.MakePixelArray(bitmap);
             if (state)
             {
-                for (int j = 0; j < colmn; j++)
+                for (int j = 0; j < colmn; j++) 
                 {
-                    if (BitmapOperations.CheckColor(bitmap.GetPixel(j, row)))
+                    if (!BitmapOperations.IsWhiteColor(pixels[j,row].Color))
                     {
-                        queueColors.Enqueue(new Pixel(j, row));
+                        //pixels[j, row].IsChecked = true;
+                        queueColors.Enqueue(pixels[j, row]);
                         while (queueColors.Count != 0)
                         {
-                            BitmapOperations.FindNeighbours(bitmap, queueColors);
-                            BitmapOperations.PaintCells(bitmap, queueColors,Color.White);
+                            BitmapOperations.FindNeighbours(pixels, queueColors);
+                            BitmapOperations.PaintCells(bitmap, queueColors.ToList(),Color.White);
                         }
                     }
                 }
@@ -42,13 +44,14 @@ namespace VideoAudio.Filters
             {
                 for (int j = 0; j < row; j++)
                 {
-                    if (BitmapOperations.CheckColor(bitmap.GetPixel(colmn, j)))
+                    if (!BitmapOperations.IsWhiteColor(pixels[colmn, j].Color))
                     {
-                        queueColors.Enqueue(new Pixel(colmn, j));
+                        //pixels[colmn, j].IsChecked = true;
+                        queueColors.Enqueue(pixels[colmn, j]);
                         while (queueColors.Count != 0)
                         {
-                            BitmapOperations.FindNeighbours(bitmap, queueColors);
-                            BitmapOperations.PaintCells(bitmap, queueColors, Color.White);
+                            BitmapOperations.FindNeighbours(pixels, queueColors);
+                            BitmapOperations.PaintCells(bitmap, queueColors.ToList(), Color.White);
                         }
 
                     }

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioProcess.cs" />
+    <Compile Include="Classificators\ImgFidelity.cs" />
     <Compile Include="CV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +77,7 @@
     <Compile Include="Filters\Circumscription.cs" />
     <Compile Include="Filters\EdgeFilter.cs" />
     <Compile Include="Filters\MarkObject.cs" />
+    <Compile Include="Filters\ScallingObjects.cs" />
     <Compile Include="Filters\TimeRow.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

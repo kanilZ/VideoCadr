@@ -9,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoAudio.Classificators;
 using VideoAudio.Filters;
 
 namespace VideoAudio
 {
     public partial class CV : Form
     {
-        Median median; 
+        Median median;
         public CV()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace VideoAudio
 
         private void uploadPhotoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog()==DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBoxInput.Image = Image.FromFile(openFileDialog.FileName);
             }
@@ -46,6 +47,7 @@ namespace VideoAudio
             pictureBoxOutput.Image = MarkObject.Apply((Bitmap)pictureBoxOutput.Image);
             pictureBoxOutput.Image = Circumscription.Apply((Bitmap)pictureBoxOutput.Image);
             Circumscription.DrawLines(Circumscription.objectEdges, (Bitmap)pictureBoxInput.Image);
+            ScallingObjects.Apply(Circumscription.objectEdges, (Bitmap)pictureBoxInput.Image);
         }
 
         private void buttonEdgeFilter_Click(object sender, EventArgs e)
@@ -55,7 +57,27 @@ namespace VideoAudio
 
         private void saveObjectsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ScallingObjects.SaveObjects(ScallingObjects.Objects);
+        }
 
+        private void classificationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //pictureBoxInput.Image = ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects);
+            //pictureBoxOutput.Image = ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects);
+            FormatForMessageBox(ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects));
+        }
+        private void FormatForMessageBox(List<int> result)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < result.Count; i++)
+            {
+                if (result[i] == -9999)               
+                    stringBuilder.Append($"\n{i+1} об'єкт - невідоме число");
+                
+                else
+                    stringBuilder.Append($"\n{i + 1} об'єкт - число {result[i]}");
+            }
+            MessageBox.Show(stringBuilder.ToString());
         }
     }
 }

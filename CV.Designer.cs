@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
             this.buttonEdgeFilter = new System.Windows.Forms.Button();
+            this.classificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOutput)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -86,10 +87,11 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadPhotoToolStripMenuItem,
-            this.saveObjectsToolStripMenuItem});
+            this.saveObjectsToolStripMenuItem,
+            this.classificationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -140,6 +142,13 @@
             this.buttonEdgeFilter.UseVisualStyleBackColor = true;
             this.buttonEdgeFilter.Click += new System.EventHandler(this.buttonEdgeFilter_Click);
             // 
+            // classificationToolStripMenuItem
+            // 
+            this.classificationToolStripMenuItem.Name = "classificationToolStripMenuItem";
+            this.classificationToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.classificationToolStripMenuItem.Text = "Класифікувати об\'єкти";
+            this.classificationToolStripMenuItem.Click += new System.EventHandler(this.classificationToolStripMenuItem_Click);
+            // 
             // CV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,5 +185,6 @@
         private System.Windows.Forms.Button buttonResult;
         private System.Windows.Forms.Button buttonEdgeFilter;
         private System.Windows.Forms.ToolStripMenuItem saveObjectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem classificationToolStripMenuItem;
     }
 }

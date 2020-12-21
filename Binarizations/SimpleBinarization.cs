@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoAudio.Filters
-{
-    static class Binarization
-    {
 
-        public static Bitmap Apply(Bitmap entered)
+namespace VideoAudio.Binarizations
+{
+    public class SimpleBinarization : Binarize
+    {
+        public override Bitmap Apply(Bitmap entered)
         {
             int height = entered.Height, width = entered.Width;
             Bitmap exited = new Bitmap(width, height);
@@ -32,14 +32,10 @@ namespace VideoAudio.Filters
             return exited;
         }
 
-        private static int AvgRGB(int r, int g, int b)
-        {
-            return (r + g + b) / 3;
-        }
-        private static int SetToBinary(int value)
+
+        protected static int SetToBinary(int value)
         {
             return value <= 128 ? 0 : 255;
         }
-
     }
 }

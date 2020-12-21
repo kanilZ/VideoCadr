@@ -35,10 +35,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.uploadPhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveObjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.classificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imgFidelityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.neuralNetworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
             this.buttonEdgeFilter = new System.Windows.Forms.Button();
-            this.classificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.typeBinarizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.standartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOutput)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -88,10 +93,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadPhotoToolStripMenuItem,
             this.saveObjectsToolStripMenuItem,
-            this.classificationToolStripMenuItem});
+            this.classificationToolStripMenuItem,
+            this.typeBinarizationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 30);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,6 +114,30 @@
             this.saveObjectsToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.saveObjectsToolStripMenuItem.Text = "Зберегти об\'єкти";
             this.saveObjectsToolStripMenuItem.Click += new System.EventHandler(this.saveObjectsToolStripMenuItem_Click);
+            // 
+            // classificationToolStripMenuItem
+            // 
+            this.classificationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.imgFidelityToolStripMenuItem,
+            this.neuralNetworkToolStripMenuItem});
+            this.classificationToolStripMenuItem.Name = "classificationToolStripMenuItem";
+            this.classificationToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.classificationToolStripMenuItem.Text = "Класифікувати об\'єкти";
+            this.classificationToolStripMenuItem.Click += new System.EventHandler(this.classificationToolStripMenuItem_Click);
+            // 
+            // imgFidelityToolStripMenuItem
+            // 
+            this.imgFidelityToolStripMenuItem.Name = "imgFidelityToolStripMenuItem";
+            this.imgFidelityToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.imgFidelityToolStripMenuItem.Text = "ImgFidelity";
+            this.imgFidelityToolStripMenuItem.Click += new System.EventHandler(this.imgFidelityToolStripMenuItem_Click);
+            // 
+            // neuralNetworkToolStripMenuItem
+            // 
+            this.neuralNetworkToolStripMenuItem.Name = "neuralNetworkToolStripMenuItem";
+            this.neuralNetworkToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.neuralNetworkToolStripMenuItem.Text = "NeuralNetwork";
+            this.neuralNetworkToolStripMenuItem.Click += new System.EventHandler(this.neuralNetworkToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -142,12 +172,28 @@
             this.buttonEdgeFilter.UseVisualStyleBackColor = true;
             this.buttonEdgeFilter.Click += new System.EventHandler(this.buttonEdgeFilter_Click);
             // 
-            // classificationToolStripMenuItem
+            // typeBinarizationToolStripMenuItem
             // 
-            this.classificationToolStripMenuItem.Name = "classificationToolStripMenuItem";
-            this.classificationToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
-            this.classificationToolStripMenuItem.Text = "Класифікувати об\'єкти";
-            this.classificationToolStripMenuItem.Click += new System.EventHandler(this.classificationToolStripMenuItem_Click);
+            this.typeBinarizationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTriToolStripMenuItem,
+            this.standartToolStripMenuItem});
+            this.typeBinarizationToolStripMenuItem.Name = "typeBinarizationToolStripMenuItem";
+            this.typeBinarizationToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.typeBinarizationToolStripMenuItem.Text = "Тип бінарізації";
+            // 
+            // mTriToolStripMenuItem
+            // 
+            this.mTriToolStripMenuItem.Name = "mTriToolStripMenuItem";
+            this.mTriToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mTriToolStripMenuItem.Text = "Метод трикутника";
+            this.mTriToolStripMenuItem.Click += new System.EventHandler(this.mTriToolStripMenuItem_Click);
+            // 
+            // standartToolStripMenuItem
+            // 
+            this.standartToolStripMenuItem.Name = "standartToolStripMenuItem";
+            this.standartToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.standartToolStripMenuItem.Text = "Стандартний";
+            this.standartToolStripMenuItem.Click += new System.EventHandler(this.standartToolStripMenuItem_Click);
             // 
             // CV
             // 
@@ -186,5 +232,10 @@
         private System.Windows.Forms.Button buttonEdgeFilter;
         private System.Windows.Forms.ToolStripMenuItem saveObjectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem classificationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imgFidelityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem neuralNetworkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem typeBinarizationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem standartToolStripMenuItem;
     }
 }

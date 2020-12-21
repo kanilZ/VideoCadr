@@ -11,7 +11,7 @@ namespace VideoAudio.Classificators
     {
         static private List<int> Classification(List<Bitmap> objects)
         {
-            List<Bitmap> ethalons = UploadEthalons();
+            List<Bitmap> ethalons = Ethalon.UploadEthalons();
             List<double> bufResults = new List<double>();
             List<int> results = new List<int>();
             foreach (var item in objects)
@@ -65,15 +65,6 @@ namespace VideoAudio.Classificators
           return  Classification(bitmaps);
             //return null;
         }
-        static private List<Bitmap> UploadEthalons()
-        {
-            List<Bitmap> bitmaps = new List<Bitmap>();
-            for (int i = 0; i < 10; i++)
-            {
-                string path = $@"D:\IT\repos\VideoCadr\Classficator Objects\{i}.bmp";
-                bitmaps.Add((Bitmap)System.Drawing.Image.FromFile(path));
-            }
-            return bitmaps;
-        }
+      
     }
 }

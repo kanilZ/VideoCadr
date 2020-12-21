@@ -48,6 +48,9 @@
     <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
       <HintPath>packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
+    <Reference Include="KanilsNetworks">
+      <HintPath>C:\Users\konot\source\repos\NeuralNetworks\NeuralNetworks\bin\Debug\KanilsNetworks.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
@@ -65,14 +68,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioProcess.cs" />
+    <Compile Include="Binarizations\Binarize.cs" />
+    <Compile Include="Binarizations\AvarageMethod.cs" />
+    <Compile Include="Classificators\Ethalon.cs" />
     <Compile Include="Classificators\ImgFidelity.cs" />
+    <Compile Include="Classificators\NeuralNetworkClassification.cs" />
     <Compile Include="CV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CV.Designer.cs">
       <DependentUpon>CV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filters\Binarization.cs" />
+    <Compile Include="Binarizations\SimpleBinarization.cs" />
     <Compile Include="Filters\BitmapOperations.cs" />
     <Compile Include="Filters\Circumscription.cs" />
     <Compile Include="Filters\EdgeFilter.cs" />

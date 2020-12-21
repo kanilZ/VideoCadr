@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoAudio.Binarizations;
 using VideoAudio.Classificators;
 using VideoAudio.Filters;
 
@@ -17,6 +18,8 @@ namespace VideoAudio
     public partial class CV : Form
     {
         Median median;
+        NeuralNetworkClassification networkClassification;
+        Binarize binarize;
         public CV()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace VideoAudio
 
         private void buttonBin_Click(object sender, EventArgs e)
         {
-            pictureBoxOutput.Image = Binarization.Apply((Bitmap)pictureBoxInput.Image);
+            pictureBoxOutput.Image = binarize?.Apply((Bitmap)pictureBoxInput.Image);
         }
 
         private void buttonResult_Click(object sender, EventArgs e)
@@ -47,6 +50,7 @@ namespace VideoAudio
             pictureBoxOutput.Image = MarkObject.Apply((Bitmap)pictureBoxOutput.Image);
             pictureBoxOutput.Image = Circumscription.Apply((Bitmap)pictureBoxOutput.Image);
             Circumscription.DrawLines(Circumscription.objectEdges, (Bitmap)pictureBoxInput.Image);
+            pictureBoxInput.Refresh();
             ScallingObjects.Apply(Circumscription.objectEdges, (Bitmap)pictureBoxInput.Image);
         }
 
@@ -64,20 +68,41 @@ namespace VideoAudio
         {
             //pictureBoxInput.Image = ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects);
             //pictureBoxOutput.Image = ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects);
-            FormatForMessageBox(ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects));
+
         }
         private void FormatForMessageBox(List<int> result)
         {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < result.Count; i++)
             {
-                if (result[i] == -9999)               
-                    stringBuilder.Append($"\n{i+1} об'єкт - невідоме число");
-                
+                if (result[i] == -9999)
+                    stringBuilder.Append($"\n{i + 1} об'єкт - невідоме число");
+
                 else
                     stringBuilder.Append($"\n{i + 1} об'єкт - число {result[i]}");
             }
             MessageBox.Show(stringBuilder.ToString());
+        }
+
+        private void imgFidelityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormatForMessageBox(ImgFidelity.ShowClassificatorResults(ScallingObjects.Objects));
+        }
+
+        private void neuralNetworkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            networkClassification = new NeuralNetworkClassification();
+            FormatForMessageBox(networkClassification.TakeResult(ScallingObjects.Objects));
+        }
+
+        private void standartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            binarize = new SimpleBinarization();
+        }
+
+        private void mTriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            binarize = new AvarageMethod();
         }
     }
 }

@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="AudioProcess.cs" />
     <Compile Include="Binarizations\Binarize.cs" />
-    <Compile Include="Binarizations\AvarageMethod.cs" />
+    <Compile Include="Binarizations\TriangleMethod.cs" />
     <Compile Include="Classificators\Ethalon.cs" />
     <Compile Include="Classificators\ImgFidelity.cs" />
     <Compile Include="Classificators\NeuralNetworkClassification.cs" />

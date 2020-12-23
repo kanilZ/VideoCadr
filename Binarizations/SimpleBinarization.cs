@@ -23,7 +23,7 @@ namespace VideoAudio.Binarizations
                     colorRGB = entered.GetPixel(i, j);
                     int r = colorRGB.R, g = colorRGB.G, b = colorRGB.B;
                     int avgColor = AvgRGB(r, g, b);
-                    int binColor = SetToBinary(avgColor);
+                    int binColor = SetToBinary(avgColor, 128);
                     colorBinary = Color.FromArgb(binColor, binColor, binColor);
                     exited.SetPixel(i, j, colorBinary);
                 }
@@ -33,9 +33,6 @@ namespace VideoAudio.Binarizations
         }
 
 
-        protected static int SetToBinary(int value)
-        {
-            return value <= 128 ? 0 : 255;
-        }
+        
     }
 }

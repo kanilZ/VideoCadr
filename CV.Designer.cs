@@ -38,12 +38,12 @@
             this.classificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imgFidelityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuralNetworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonResult = new System.Windows.Forms.Button();
-            this.buttonEdgeFilter = new System.Windows.Forms.Button();
             this.typeBinarizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mTriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.standartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonResult = new System.Windows.Forms.Button();
+            this.buttonEdgeFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOutput)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -51,9 +51,8 @@
             // 
             // pictureBoxInput
             // 
-            this.pictureBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxInput.InitialImage = null;
             this.pictureBoxInput.Location = new System.Drawing.Point(23, 39);
             this.pictureBoxInput.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
@@ -65,8 +64,7 @@
             // 
             // pictureBoxOutput
             // 
-            this.pictureBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxOutput.Location = new System.Drawing.Point(522, 39);
             this.pictureBoxOutput.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
@@ -139,6 +137,29 @@
             this.neuralNetworkToolStripMenuItem.Text = "NeuralNetwork";
             this.neuralNetworkToolStripMenuItem.Click += new System.EventHandler(this.neuralNetworkToolStripMenuItem_Click);
             // 
+            // typeBinarizationToolStripMenuItem
+            // 
+            this.typeBinarizationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTriToolStripMenuItem,
+            this.standartToolStripMenuItem});
+            this.typeBinarizationToolStripMenuItem.Name = "typeBinarizationToolStripMenuItem";
+            this.typeBinarizationToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.typeBinarizationToolStripMenuItem.Text = "Тип бінарізації";
+            // 
+            // mTriToolStripMenuItem
+            // 
+            this.mTriToolStripMenuItem.Name = "mTriToolStripMenuItem";
+            this.mTriToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.mTriToolStripMenuItem.Text = "Метод трикутника";
+            this.mTriToolStripMenuItem.Click += new System.EventHandler(this.mTriToolStripMenuItem_Click);
+            // 
+            // standartToolStripMenuItem
+            // 
+            this.standartToolStripMenuItem.Name = "standartToolStripMenuItem";
+            this.standartToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.standartToolStripMenuItem.Text = "Стандартний";
+            this.standartToolStripMenuItem.Click += new System.EventHandler(this.standartToolStripMenuItem_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -171,29 +192,6 @@
             this.buttonEdgeFilter.Text = "Фільтрація країв";
             this.buttonEdgeFilter.UseVisualStyleBackColor = true;
             this.buttonEdgeFilter.Click += new System.EventHandler(this.buttonEdgeFilter_Click);
-            // 
-            // typeBinarizationToolStripMenuItem
-            // 
-            this.typeBinarizationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mTriToolStripMenuItem,
-            this.standartToolStripMenuItem});
-            this.typeBinarizationToolStripMenuItem.Name = "typeBinarizationToolStripMenuItem";
-            this.typeBinarizationToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
-            this.typeBinarizationToolStripMenuItem.Text = "Тип бінарізації";
-            // 
-            // mTriToolStripMenuItem
-            // 
-            this.mTriToolStripMenuItem.Name = "mTriToolStripMenuItem";
-            this.mTriToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.mTriToolStripMenuItem.Text = "Метод трикутника";
-            this.mTriToolStripMenuItem.Click += new System.EventHandler(this.mTriToolStripMenuItem_Click);
-            // 
-            // standartToolStripMenuItem
-            // 
-            this.standartToolStripMenuItem.Name = "standartToolStripMenuItem";
-            this.standartToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.standartToolStripMenuItem.Text = "Стандартний";
-            this.standartToolStripMenuItem.Click += new System.EventHandler(this.standartToolStripMenuItem_Click);
             // 
             // CV
             // 

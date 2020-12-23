@@ -102,7 +102,7 @@ namespace VideoAudio
 
         private void mTriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            binarize = new AvarageMethod();
+            binarize = new TriangleMethod();
         }
     }
 }

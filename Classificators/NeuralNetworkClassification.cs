@@ -30,7 +30,7 @@ namespace VideoAudio.Classificators
             foreach (var obj in objects)
             {
                 var predict = neuralNetwork.Predict(ConvertBitmap(obj)).OrderByDescending(n => n.Output).First();
-                if (predict.Output < 0.50)
+                if (predict.Output < 0.40)
                 {
                     listRes.Add(-9999);
                 }

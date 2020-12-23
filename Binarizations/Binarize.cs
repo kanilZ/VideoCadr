@@ -14,6 +14,9 @@ namespace VideoAudio.Binarizations
         {
             return (r + g + b) / 3;
         }
-       
+        protected static int SetToBinary(int avg, int threshold)
+        {
+            return avg < threshold ? 0 : 255;
+        }
     }
 }
